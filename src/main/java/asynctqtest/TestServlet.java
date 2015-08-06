@@ -45,13 +45,13 @@ public class TestServlet extends HttpServlet {
 				Entity entity = new Entity("Task", keyName);
 				entity.setProperty("status", "pending");
 				entity.setProperty("createdAt", new Date());
-				futures.add(datastore.put(tx, entity));
+				datastore.put(tx, entity);
 
 				Queue queue = QueueFactory.getDefaultQueue();
-				futures.add(queue.addAsync(
+				queue.addAsync(
 						tx,
 						TaskOptions.Builder.withUrl("/task")
-								.param("key", keyName).method(Method.GET)));
+								.param("key", keyName).method(Method.GET));
 
 				futures.add(tx.commitAsync());
 			} catch (Throwable t) {
