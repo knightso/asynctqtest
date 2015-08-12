@@ -25,7 +25,7 @@ import com.google.appengine.api.taskqueue.TaskOptions.Method;
 public class TestServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	Logger logger = Logger.getLogger(TestServlet.class.getSimpleName());
 
 	@Override
@@ -40,7 +40,7 @@ public class TestServlet extends HttpServlet {
 			Transaction tx = null;
 			try {
 				tx = datastore.beginTransaction().get();
-				
+
 				String keyName = UUID.randomUUID().toString();
 				Entity entity = new Entity("Task", keyName);
 				entity.setProperty("status", "pending");

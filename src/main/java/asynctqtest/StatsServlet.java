@@ -3,6 +3,7 @@ package asynctqtest;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -38,6 +39,8 @@ public class StatsServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss ZZZ");
+		
 		Result result = new Result();
 
 		Queue defaultQueue = QueueFactory.getDefaultQueue();
@@ -56,7 +59,8 @@ public class StatsServlet extends HttpServlet {
 		for (Entity entity : entities) {
 			Task task = new Result.Task();
 			task.setStatus((String)entity.getProperty("status"));
-			task.setCreatedAt((Date)entity.getProperty("createdAt"));
+			Date createdAt = (Date)entity.getProperty("createdAt");
+			task.setCreatedAt(sdf.format(createdAt));
 			result.getTaskEntities().add(task);
 		}
 		
@@ -110,17 +114,17 @@ public class StatsServlet extends HttpServlet {
 			private static final long serialVersionUID = 1L;
 			
 			private String status;
-			private Date createdAt;
+			private String createdAt;
 			public String getStatus() {
 				return status;
 			}
 			public void setStatus(String status) {
 				this.status = status;
 			}
-			public Date getCreatedAt() {
+			public String getCreatedAt() {
 				return createdAt;
 			}
-			public void setCreatedAt(Date createdAt) {
+			public void setCreatedAt(String createdAt) {
 				this.createdAt = createdAt;
 			}
 		}
