@@ -9,6 +9,10 @@
     <servlet-name>task</servlet-name>
     <servlet-class>asynctqtest.TaskServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>stats</servlet-name>
+    <servlet-class>asynctqtest.StatsServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>test</servlet-name>
     <url-pattern>/test</url-pattern>
@@ -16,6 +20,10 @@
   <servlet-mapping>
     <servlet-name>task</servlet-name>
     <url-pattern>/task</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>stats</servlet-name>
+    <url-pattern>/stats</url-pattern>
   </servlet-mapping>
 
 </web-app>

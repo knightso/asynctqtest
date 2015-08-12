@@ -1,2 +1,5 @@
 asynctqtest/TestServlet.class
 asynctqtest/TaskServlet.class
+asynctqtest/StatsServlet.class
+asynctqtest/StatsServlet$Result.class
+asynctqtest/StatsServlet$Result$Task.class
